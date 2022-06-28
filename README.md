@@ -1,2 +1,3 @@
-# booking
-Hotel booking system, MERN stack
+# Booking system for hotels/hostels
+
+Hotel booking system, built using MERN stack
