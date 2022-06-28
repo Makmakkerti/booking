@@ -1,9 +1,9 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import TopNav from './conponents/TopNav';
-import Home from './booking/Home';
-import Login from './auth/Login';
-import Register from './auth/Register';
+import { TopNav } from './conponents/TopNav';
+import { Home } from './booking/Home';
+import { Login } from './auth/Login';
+import { Register } from './auth/Register';
 
 function App() {
 	return (
