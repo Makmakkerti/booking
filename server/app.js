@@ -3,8 +3,14 @@ import logger from './utils/logger.js';
 import autoloadPath from './utils/autoloader.js';
 import cors from 'cors';
 import connectDB from './utils/connectDB.js';
+import bodyParser from 'body-parser';
 
 const app = express();
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+// parse application/json
+app.use(bodyParser.json());
 
 // Connect to database
 connectDB();
