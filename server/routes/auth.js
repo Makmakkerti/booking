@@ -5,4 +5,4 @@ const AuthRouter = express.Router();
 
 AuthRouter.get('/:message', showMessage);
 
-export { AuthRouter };
+export default AuthRouter;
