@@ -2,10 +2,16 @@ import express from 'express';
 import logger from './utils/logger.js';
 import path from 'path';
 import winston from 'winston';
+import cors from 'cors';
 import { dirname } from 'path';
 import colors from 'colors';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
+
+const app = express();
+
+// Using cors to prevent blocking from client
+app.use(cors());
 
 //
 // If we're not in production then log to the `console` with the format:
@@ -25,8 +31,6 @@ if (process.env.NODE_ENV !== 'production') {
 		})
 	);
 }
-
-const app = express();
 
 // Healthcheck
 app.get('/', (req, res) => {
