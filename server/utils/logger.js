@@ -1,4 +1,5 @@
 import winston from 'winston';
+import colors from 'colors';
 
 const logger = winston.createLogger({
 	level: 'info',
@@ -13,5 +14,24 @@ const logger = winston.createLogger({
 		new winston.transports.File({ filename: './logs/combined.log' }),
 	],
 });
+
+//
+// If we're not in production then log to the `console` with the format:
+// `${info.level}: ${info.message} JSON.stringify({ ...rest }) `
+//
+if (process.env.NODE_ENV !== 'production') {
+	const custom_format = winston.format.printf(
+		({ level, message, timestamp, ...metadata }) =>
+			`${colors.green(`[${level.toUpperCase()}]`)}: ${message}\n${
+				metadata && Object.keys(metadata).length ? JSON.stringify(metadata, null, 2) : ''
+			}`
+	);
+
+	logger.add(
+		new winston.transports.Console({
+			format: custom_format,
+		})
+	);
+}
 
 export default logger;
